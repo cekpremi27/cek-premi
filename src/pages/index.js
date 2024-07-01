@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import premiData from "@/data/premi.json";
+import asuransiData from "@/data/asuransi.json";
 import { useEffect, useState } from "react";
 import { formatRupiah } from "@/helpers/helper";
 import Head from "next/head";
@@ -10,9 +11,12 @@ import { Instagram, Whatsapp } from "iconsax-react";
 
 export default function Home() {
   const [data, setData] = useState(premiData);
+  const [dataAsuransi, setDataAsuransi] = useState(asuransiData);
   const [filteredData, setFilteredData] = useState([]);
   const [umur, setUmur] = useState(null);
+  const [type, setType] = useState(null);
   const [category, setCategory] = useState(null);
+  const [asuransi, setAsuransi] = useState(null);
   const [umurContact, setUmurContact] = useState(null);
   const [nama, setNama] = useState(null);
   const [gender, setGender] = useState(null);
@@ -20,12 +24,22 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const inputUmur = new FormData(event.target).get("umur");
+    const inputType = new FormData(event.target).get("type");
     setUmur(inputUmur);
-    const res = data.filter(
-      (item) => inputUmur >= item.min_age && inputUmur <= item.max_age
-    );
+    setType(inputType);
+    let res = [];
+    if (inputType == "premi") {
+      res = data.filter(
+        (item) => inputUmur >= item.min_age && inputUmur <= item.max_age
+      );
+    } else {
+      res = dataAsuransi.filter(
+        (item) => inputUmur >= item.min_age && inputUmur <= item.max_age
+      );
+    }
     setFilteredData(res);
     setCategory("pria");
+    setAsuransi("1");
     console.log(res);
   };
 
@@ -52,12 +66,553 @@ export default function Home() {
     });
   };
 
-  const handleClickSayaMau = (data, type) => {
-    const message = `Hai, saya mau info mengenai asuransi kesehatan/jiwa MSIG Life plan ${data.plan} untuk ${type} dengan umur ${umur} dan harga per bulannya sebesar ${type === 'pria' ? formatRupiah(data.male_price) : formatRupiah(data.female_price)}`;
-    const whatsappURL = `https://wa.me/+6281918880181?text=${encodeURIComponent(
-      message
+  const handleClickSayaMau = (data, gender, type, asuransi = '') => {
+    let message = '';
+    let asuransiType = '';
+    if(type === 'premi') {
+      message = `Hai, saya mau info mengenai asuransi kesehatan/jiwa MSIG Life plan ${
+        data.plan
+      } untuk ${gender} dengan umur ${umur} dan harga per bulannya sebesar ${
+        gender === "pria"
+        ? formatRupiah(data.male_price)
+        : formatRupiah(data.female_price)
+      }`;
+    } else {
+      if(asuransi == 1) {
+        asuransiType = 'UP 100 JT';
+      } else if (asuransi == 2) {
+        asuransiType = 'UP 1 M';
+      } else {
+        asuransiType = 'UP 2.5 M';
+      }
+      message = `Hai, saya mau info mengenai asuransi kesehatan/jiwa MSIG Life plan ${
+        data.plan
+      } ${asuransiType} untuk ${gender} dengan umur ${umur}`;
+    }
+      const whatsappURL = `https://wa.me/+6281918880181?text=${encodeURIComponent(
+        message
     )}`;
     window.open(whatsappURL, "_blank");
+  };
+
+  const SearchResult = () => {
+    if (umur && type) {
+      if (filteredData.length > 0) {
+        if (type == "premi") {
+          return (
+            <>
+              <div className="relative overflow-x-auto hidden md:block w-full xl:w-3/4">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
+                    <tr className="border-y">
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r border-l"
+                      >
+                        Plan
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r"
+                      >
+                        Pria
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r"
+                      >
+                        Wanita
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((item, index) => (
+                      <tr className="bg-white border-b" key={index}>
+                        <th
+                          scope="row"
+                          className="px-6 py-4 border-r border-l font-medium text-gray-900 whitespace-nowrap text-center w-[10%]"
+                        >
+                          {item.plan}
+                        </th>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.male_price)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun: {formatRupiah(item.male_price * 10)}
+                              /tahun
+                            </div>
+                            <div>Coverage: {item.coverage}</div>
+                            <div>Class: {item.class}</div>
+                            <div>Limit Tahunan: {item.limit_tahunan}</div>
+                            <div>Limit Booster: {item.limit_booster}</div>
+                            <div>Biaya Pendamping: {item.biaya_pendamping}</div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "pria", "premi")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.female_price)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.female_price * 10)}/tahun
+                            </div>
+                            <div> Coverage: {item.coverage}</div>
+                            <div>Class: {item.class}</div>
+                            <div>Limit Tahunan: {item.limit_tahunan}</div>
+                            <div> Limit Booster: {item.limit_booster}</div>
+                            <div>Biaya Pendamping: {item.biaya_pendamping}</div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "wanita", "premi")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="block md:hidden">
+                <ul className="flex md:hidden flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        category == "pria"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      aria-current="page"
+                      onClick={() => setCategory("pria")}
+                    >
+                      Pria
+                    </div>
+                  </li>
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        category == "wanita"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      onClick={() => setCategory("wanita")}
+                    >
+                      Wanita
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <>
+                <div
+                  className={`${
+                    category == "pria" ? "grid" : "hidden"
+                  } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
+                >
+                  {filteredData.map((item, index) => (
+                    <div
+                      className="text-left px-6 py-4 border flex flex-col gap-3"
+                      key={index}
+                    >
+                      <div className="font-medium text-gray-900 whitespace-nowrap">
+                        Plan: {item.plan}
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/bulan: {formatRupiah(item.male_price)}
+                        /bulan
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/tahun: {formatRupiah(item.male_price * 10)}
+                        /tahun
+                      </div>
+                      <div> Coverage: {item.coverage}</div>
+                      <div>Class: {item.class}</div>
+                      <div>Limit Tahunan: {item.limit_tahunan}</div>
+                      <div> Limit Booster: {item.limit_booster}</div>
+                      <div> Biaya Pendamping: {item.biaya_pendamping}</div>
+                      <button
+                        onClick={() => handleClickSayaMau(item, "pria", "premi")}
+                        className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                      >
+                        Saya mau ini
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+              <>
+                <div
+                  className={`${
+                    category == "wanita" ? "grid" : "hidden"
+                  } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
+                >
+                  {filteredData.map((item, index) => (
+                    <div
+                      className="text-left px-6 py-4 border flex flex-col gap-3"
+                      key={index}
+                    >
+                      <div className="font-medium text-gray-900 whitespace-nowrap">
+                        Plan: {item.plan}
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/bulan: {formatRupiah(item.female_price)}
+                        /bulan
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/tahun: {formatRupiah(item.female_price * 10)}
+                        /tahun
+                      </div>
+                      <div> Coverage: {item.coverage}</div>
+                      <div>Class: {item.class}</div>
+                      <div>Limit Tahunan: {item.limit_tahunan}</div>
+                      <div> Limit Booster: {item.limit_booster}</div>
+                      <div> Biaya Pendamping: {item.biaya_pendamping}</div>
+                      <button
+                        onClick={() => handleClickSayaMau(item, "wanita", "premi")}
+                        className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                      >
+                        Saya mau ini
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+            </>
+          );
+        } else {
+          return (
+            <>
+              <div className="relative overflow-x-auto hidden md:block w-full xl:w-3/4">
+                <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
+                  <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
+                    <tr className="border-y">
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r border-l"
+                        rowSpan={type === "asuransi" ? 2 : undefined}
+                      >
+                        Plan
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r"
+                        colSpan={type === "asuransi" ? 3 : undefined}
+                      >
+                        Pria
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-6 py-3 text-center border-r"
+                        colSpan={type === "asuransi" ? 3 : undefined}
+                      >
+                        Wanita
+                      </th>
+                    </tr>
+                    <tr>
+                      <th className="px-6 py-3 text-center border-r border-l">UP 100 JT</th>
+                      <th className="px-6 py-3 text-center border-r">UP 1 M</th>
+                      <th className="px-6 py-3 text-center border-r">UP 2.5 M</th>
+                      <th className="px-6 py-3 text-center border-r">UP 100 JT</th>
+                      <th className="px-6 py-3 text-center border-r">UP 1 M</th>
+                      <th className="px-6 py-3 text-center border-r">UP 2.5 M</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {filteredData.map((item, index) => (
+                      <tr className="bg-white border-b" key={index}>
+                        <th
+                          scope="row"
+                          className="px-6 py-4 border-r border-l font-medium text-gray-900 whitespace-nowrap text-center w-[10%]"
+                        >
+                          {item.plan}
+                        </th>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.male_price_1)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.male_price_1 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "1")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.male_price_2)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.male_price_2 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "2")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.male_price_3)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.male_price_3 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "3")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.female_price_1)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.female_price_1 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "1")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.female_price_2)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.female_price_2 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "2")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                        <td className="px-2 w-[45%] py-4 border-r">
+                          <div className="bg-white px-6 py-4 rounded-sm">
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/bulan: {formatRupiah(item.female_price_3)}
+                              /bulan
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              Premi/tahun:{" "}
+                              {formatRupiah(item.female_price_3 * 10)}
+                              /tahun
+                            </div>
+                            <button
+                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "3")}
+                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                            >
+                              Saya mau ini
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="md:hidden flex flex-col gap-2 items-center">
+                <ul className="flex md:hidden flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        category == "pria"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      aria-current="page"
+                      onClick={() => setCategory("pria")}
+                    >
+                      Pria
+                    </div>
+                  </li>
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        category == "wanita"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      onClick={() => setCategory("wanita")}
+                    >
+                      Wanita
+                    </div>
+                  </li>
+                </ul>
+                <ul className="flex md:hidden flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        asuransi == "1"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      aria-current="page"
+                      onClick={() => setAsuransi("1")}
+                    >
+                      UP 100 JT
+                    </div>
+                  </li>
+                  
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        asuransi == "2"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      onClick={() => setAsuransi("2")}
+                    >
+                      UP 1 M
+                    </div>
+                  </li>
+                  
+                  <li className="me-2">
+                    <div
+                      className={`${
+                        asuransi == "3"
+                          ? "text-white bg-blue-600"
+                          : "hover:text-gray-900 hover:bg-gray-100"
+                      } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
+                      onClick={() => setAsuransi("3")}
+                    >
+                      UP 2.5 M
+                    </div>
+                  </li>
+                </ul>
+              </div>
+              <>
+                <div
+                  className={`${
+                    category == "pria" ? "grid" : "hidden"
+                  } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
+                >
+                  {filteredData.map((item, index) => (
+                    <div
+                      className="text-left px-6 py-4 border flex flex-col gap-3"
+                      key={index}
+                    >
+                      <div className="font-medium text-gray-900 whitespace-nowrap">
+                        Plan: {item.plan}
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/bulan: {formatRupiah(item[`male_price_${asuransi}`])}
+                        /bulan
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/tahun: {formatRupiah(item[`male_price_${asuransi}`] * 10)}
+                        /tahun
+                      </div>
+                      <button
+                        onClick={() => handleClickSayaMau(item, "pria", "asuransi", asuransi)}
+                        className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                      >
+                        Saya mau ini
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+              <>
+                <div
+                  className={`${
+                    category == "wanita" ? "grid" : "hidden"
+                  } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
+                >
+                  {filteredData.map((item, index) => (
+                    <div
+                      className="text-left px-6 py-4 border flex flex-col gap-3"
+                      key={index}
+                    >
+                      <div className="font-medium text-gray-900 whitespace-nowrap">
+                        Plan: {item.plan}
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/bulan: {formatRupiah(item[`female_price_${asuransi}`])}
+                        /bulan
+                      </div>
+                      <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                        Premi/tahun: {formatRupiah(item[`female_price_${asuransi}`] * 10)}
+                        /tahun
+                      </div>
+                      <button
+                        onClick={() => handleClickSayaMau(item, "wanita", "asuransi", asuransi)}
+                        className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                      >
+                        Saya mau ini
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              </>
+            </>
+          );
+        }
+      } else {
+        return <>Data tidak ditemukan</>;
+      }
+    }
   };
   return (
     <>
@@ -130,9 +685,18 @@ export default function Home() {
               Maksimal.
             </p>
             <form
-              className="w-1/2 flex flex-col gap-8 "
+              className="w-1/2 flex flex-col gap-6"
               onSubmit={(event) => handleSubmit(event)}
             >
+              <select
+                id="type"
+                name="type"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              >
+                <option selected>Pilih Jenis</option>
+                <option value="asuransi">Asuransi</option>
+                <option value="premi">Premi</option>
+              </select>
               <div className="relative w-full">
                 <input
                   type="text"
@@ -158,197 +722,7 @@ export default function Home() {
               </button>
             </form>
 
-            {umur ? (
-              filteredData.length > 0 ? (
-                <>
-                  <div className="relative overflow-x-auto hidden md:block w-full xl:w-3/4">
-                    <table className="w-full text-sm text-left rtl:text-right text-gray-500 ">
-                      <thead className="text-xs text-gray-700 uppercase bg-gray-50  ">
-                        <tr className="border-y">
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-center border-r border-l"
-                          >
-                            Plan
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-center border-r"
-                          >
-                            Pria
-                          </th>
-                          <th
-                            scope="col"
-                            className="px-6 py-3 text-center border-r"
-                          >
-                            Wanita
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredData.map((item, index) => (
-                          <tr className="bg-white border-b" key={index}>
-                            <th
-                              scope="row"
-                              className="px-6 py-4 border-r border-l font-medium text-gray-900 whitespace-nowrap text-center w-[10%]"
-                            >
-                              {item.plan}
-                            </th>
-                            <td className="px-2 w-[45%] py-4 border-r">
-                              <div className="bg-white px-6 py-4 rounded-sm">
-                                <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                                  {" "}
-                                  Premi/bulan: {formatRupiah(item.male_price)}
-                                  /bulan
-                                </div>
-                                <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                                  {" "}
-                                  Premi/tahun:{" "}
-                                  {formatRupiah(item.male_price * 10)}/tahun
-                                </div>
-                                <div>Coverage: {item.coverage}</div>
-                                <div>Class: {item.class}</div>
-                                <div>Limit Tahunan: {item.limit_tahunan}</div>
-                                <div>Limit Booster: {item.limit_booster}</div>
-                                <div>
-                                  Biaya Pendamping: {item.biaya_pendamping}
-                                </div>
-                                <button onClick={() => handleClickSayaMau(item, 'pria')} className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full">
-                                  Saya mau ini
-                                </button>
-                              </div>
-                            </td>
-                            <td className="px-2 w-[45%] py-4 border-r">
-                              <div className="bg-white px-6 py-4 rounded-sm">
-                                <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                                  {" "}
-                                  Premi/bulan: {formatRupiah(item.female_price)}
-                                  /bulan
-                                </div>
-                                <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                                  {" "}
-                                  Premi/tahun:{" "}
-                                  {formatRupiah(item.female_price * 10)}/tahun
-                                </div>
-                                <div> Coverage: {item.coverage}</div>
-                                <div>Class: {item.class}</div>
-                                <div>Limit Tahunan: {item.limit_tahunan}</div>
-                                <div> Limit Booster: {item.limit_booster}</div>
-                                <div>
-                                  Biaya Pendamping: {item.biaya_pendamping}
-                                </div>
-                                <button onClick={() => handleClickSayaMau(item, 'wanita')} className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full">
-                                  Saya mau ini
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                  <div className="block md:hidden">
-                    <ul className="flex md:hidden flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-                      <li className="me-2">
-                        <div
-                          className={`${
-                            category == "pria"
-                              ? "text-white bg-blue-600"
-                              : "hover:text-gray-900 hover:bg-gray-100"
-                          } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
-                          aria-current="page"
-                          onClick={() => setCategory("pria")}
-                        >
-                          Pria
-                        </div>
-                      </li>
-                      <li className="me-2">
-                        <div
-                          className={`${
-                            category == "wanita"
-                              ? "text-white bg-blue-600"
-                              : "hover:text-gray-900 hover:bg-gray-100"
-                          } inline-block px-4 py-3 rounded-lg active cursor-pointer`}
-                          onClick={() => setCategory("wanita")}
-                        >
-                          Wanita
-                        </div>
-                      </li>
-                    </ul>
-                  </div>
-                  <>
-                    <div
-                      className={`${
-                        category == "pria" ? "grid" : "hidden"
-                      } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
-                    >
-                      {filteredData.map((item, index) => (
-                        <div
-                          className="text-left px-6 py-4 border flex flex-col gap-3"
-                          key={index}
-                        >
-                          <div className="font-medium text-gray-900 whitespace-nowrap">
-                            Plan: {item.plan}
-                          </div>
-                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                            Premi/bulan: {formatRupiah(item.male_price)}
-                            /bulan
-                          </div>
-                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                            Premi/tahun: {formatRupiah(item.male_price * 10)}
-                            /tahun
-                          </div>
-                          <div> Coverage: {item.coverage}</div>
-                          <div>Class: {item.class}</div>
-                          <div>Limit Tahunan: {item.limit_tahunan}</div>
-                          <div> Limit Booster: {item.limit_booster}</div>
-                          <div> Biaya Pendamping: {item.biaya_pendamping}</div>
-                          <button onClick={() => handleClickSayaMau(item, 'pria')} className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full">
-                            Saya mau ini
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                  <>
-                    <div
-                      className={`${
-                        category == "wanita" ? "grid" : "hidden"
-                      } md:hidden grid-cols-1 sm:grid-cols-2 gap-5 w-full`}
-                    >
-                      {filteredData.map((item, index) => (
-                        <div
-                          className="text-left px-6 py-4 border flex flex-col gap-3"
-                          key={index}
-                        >
-                          <div className="font-medium text-gray-900 whitespace-nowrap">
-                            Plan: {item.plan}
-                          </div>
-                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                            Premi/bulan: {formatRupiah(item.female_price)}
-                            /bulan
-                          </div>
-                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                            Premi/tahun: {formatRupiah(item.female_price * 10)}
-                            /tahun
-                          </div>
-                          <div> Coverage: {item.coverage}</div>
-                          <div>Class: {item.class}</div>
-                          <div>Limit Tahunan: {item.limit_tahunan}</div>
-                          <div> Limit Booster: {item.limit_booster}</div>
-                          <div> Biaya Pendamping: {item.biaya_pendamping}</div>
-                          <button onClick={() => handleClickSayaMau(item, 'wanita')} className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full">
-                            Saya mau ini
-                          </button>
-                        </div>
-                      ))}
-                    </div>
-                  </>
-                </>
-              ) : (
-                <>Data tidak ditemukan</>
-              )
-            ) : null}
+           <SearchResult/>
           </div>
         </section>
         <section className="bg-blue-600 text-white about-us" id="about-us">
