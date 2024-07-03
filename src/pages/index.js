@@ -66,31 +66,25 @@ export default function Home() {
     });
   };
 
-  const handleClickSayaMau = (data, gender, type, asuransi = '') => {
-    let message = '';
-    let asuransiType = '';
-    if(type === 'premi') {
-      message = `Hai, saya mau info mengenai asuransi kesehatan/jiwa MSIG Life plan ${
+  const handleClickSayaMau = (data, gender, type, asuransi = "") => {
+    let message = "";
+    let asuransiType = "";
+    if (type === "premi") {
+      message = `Hai, saya mau info mengenai asuransi kesehatan MSIG Life plan ${
         data.plan
-      } untuk ${gender} dengan umur ${umur} dan harga per bulannya sebesar ${
-        gender === "pria"
-        ? formatRupiah(data.male_price)
-        : formatRupiah(data.female_price)
-      }`;
+      } untuk ${gender} dengan umur ${umur}`;
     } else {
-      if(asuransi == 1) {
-        asuransiType = 'UP 100 JT';
+      if (asuransi == 1) {
+        asuransiType = "UP 100 JT";
       } else if (asuransi == 2) {
-        asuransiType = 'UP 1 M';
+        asuransiType = "UP 1 M";
       } else {
-        asuransiType = 'UP 2.5 M';
+        asuransiType = "UP 2.5 M";
       }
-      message = `Hai, saya mau info mengenai asuransi kesehatan/jiwa MSIG Life plan ${
-        data.plan
-      } ${asuransiType} untuk ${gender} dengan umur ${umur}`;
+      message = `Hai, saya mau info mengenai asuransi jiwa MSIG Life plan ${data.plan} ${asuransiType} untuk ${gender} dengan umur ${umur}`;
     }
-      const whatsappURL = `https://wa.me/+6281918880181?text=${encodeURIComponent(
-        message
+    const whatsappURL = `https://wa.me/+6281918880181?text=${encodeURIComponent(
+      message
     )}`;
     window.open(whatsappURL, "_blank");
   };
@@ -152,10 +146,13 @@ export default function Home() {
                             <div>Limit Booster: {item.limit_booster}</div>
                             <div>Biaya Pendamping: {item.biaya_pendamping}</div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "pria", "premi")}
+                              onClick={() =>
+                                handleClickSayaMau(item, "pria", "premi")
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
                         </td>
@@ -177,10 +174,13 @@ export default function Home() {
                             <div> Limit Booster: {item.limit_booster}</div>
                             <div>Biaya Pendamping: {item.biaya_pendamping}</div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "wanita", "premi")}
+                              onClick={() =>
+                                handleClickSayaMau(item, "wanita", "premi")
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
                         </td>
@@ -246,7 +246,9 @@ export default function Home() {
                       <div> Limit Booster: {item.limit_booster}</div>
                       <div> Biaya Pendamping: {item.biaya_pendamping}</div>
                       <button
-                        onClick={() => handleClickSayaMau(item, "pria", "premi")}
+                        onClick={() =>
+                          handleClickSayaMau(item, "pria", "premi")
+                        }
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
                         <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
@@ -283,7 +285,9 @@ export default function Home() {
                       <div> Limit Booster: {item.limit_booster}</div>
                       <div> Biaya Pendamping: {item.biaya_pendamping}</div>
                       <button
-                        onClick={() => handleClickSayaMau(item, "wanita", "premi")}
+                        onClick={() =>
+                          handleClickSayaMau(item, "wanita", "premi")
+                        }
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
                         <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
@@ -304,32 +308,21 @@ export default function Home() {
                       <th
                         scope="col"
                         className="px-6 py-3 text-center border-r border-l"
-                        rowSpan={type === "asuransi" ? 2 : undefined}
                       >
                         Plan
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-center border-r"
-                        colSpan={type === "asuransi" ? 3 : undefined}
                       >
                         Pria
                       </th>
                       <th
                         scope="col"
                         className="px-6 py-3 text-center border-r"
-                        colSpan={type === "asuransi" ? 3 : undefined}
                       >
                         Wanita
                       </th>
-                    </tr>
-                    <tr>
-                      <th className="px-6 py-3 text-center border-r border-l">UP 100 JT</th>
-                      <th className="px-6 py-3 text-center border-r">UP 1 M</th>
-                      <th className="px-6 py-3 text-center border-r">UP 2.5 M</th>
-                      <th className="px-6 py-3 text-center border-r">UP 100 JT</th>
-                      <th className="px-6 py-3 text-center border-r">UP 1 M</th>
-                      <th className="px-6 py-3 text-center border-r">UP 2.5 M</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -345,6 +338,10 @@ export default function Home() {
                           <div className="bg-white px-6 py-4 rounded-sm">
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
+                              UP 100 Juta
+                            </div>
+                            <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
                               Premi/bulan: {formatRupiah(item.male_price_1)}
                               /bulan
                             </div>
@@ -355,15 +352,25 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "1")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "pria",
+                                  "asuransi",
+                                  "1"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
-                        </td>
-                        <td className="px-2 w-[45%] py-4 border-r">
                           <div className="bg-white px-6 py-4 rounded-sm">
+                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              UP 1 Milyar
+                            </div>
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
                               Premi/bulan: {formatRupiah(item.male_price_2)}
@@ -376,15 +383,25 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "2")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "pria",
+                                  "asuransi",
+                                  "2"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
-                        </td>
-                        <td className="px-2 w-[45%] py-4 border-r">
                           <div className="bg-white px-6 py-4 rounded-sm">
+                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              UP 2,5 Milyar
+                            </div>
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
                               Premi/bulan: {formatRupiah(item.male_price_3)}
@@ -397,15 +414,27 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "pria", "asuransi", "3")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "pria",
+                                  "asuransi",
+                                  "3"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
                         </td>
                         <td className="px-2 w-[45%] py-4 border-r">
                           <div className="bg-white px-6 py-4 rounded-sm">
+                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              UP 100 Juta
+                            </div>
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
                               Premi/bulan: {formatRupiah(item.female_price_1)}
@@ -418,15 +447,25 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "1")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "wanita",
+                                  "asuransi",
+                                  "1"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
-                        </td>
-                        <td className="px-2 w-[45%] py-4 border-r">
                           <div className="bg-white px-6 py-4 rounded-sm">
+                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              UP 1 Milyar
+                            </div>
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
                               Premi/bulan: {formatRupiah(item.female_price_2)}
@@ -439,15 +478,25 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "2")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "wanita",
+                                  "asuransi",
+                                  "2"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
-                        </td>
-                        <td className="px-2 w-[45%] py-4 border-r">
                           <div className="bg-white px-6 py-4 rounded-sm">
+                          <div className="font-medium text-gray-900 whitespace-nowrap italic">
+                              {" "}
+                              UP 2,5 Milyar
+                            </div>
                             <div className="font-medium text-gray-900 whitespace-nowrap italic">
                               {" "}
                               Premi/bulan: {formatRupiah(item.female_price_3)}
@@ -460,10 +509,18 @@ export default function Home() {
                               /tahun
                             </div>
                             <button
-                              onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "3")}
+                              onClick={() =>
+                                handleClickSayaMau(
+                                  item,
+                                  "wanita",
+                                  "asuransi",
+                                  "3"
+                                )
+                              }
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info
+                              Ini
                             </button>
                           </div>
                         </td>
@@ -514,7 +571,7 @@ export default function Home() {
                       UP 100 JT
                     </div>
                   </li>
-                  
+
                   <li className="me-2">
                     <div
                       className={`${
@@ -527,7 +584,7 @@ export default function Home() {
                       UP 1 M
                     </div>
                   </li>
-                  
+
                   <li className="me-2">
                     <div
                       className={`${
@@ -557,15 +614,19 @@ export default function Home() {
                         Plan: {item.plan}
                       </div>
                       <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                        Premi/bulan: {formatRupiah(item[`male_price_${asuransi}`])}
+                        Premi/bulan:{" "}
+                        {formatRupiah(item[`male_price_${asuransi}`])}
                         /bulan
                       </div>
                       <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                        Premi/tahun: {formatRupiah(item[`male_price_${asuransi}`] * 10)}
+                        Premi/tahun:{" "}
+                        {formatRupiah(item[`male_price_${asuransi}`] * 10)}
                         /tahun
                       </div>
                       <button
-                        onClick={() => handleClickSayaMau(item, "pria", "asuransi", asuransi)}
+                        onClick={() =>
+                          handleClickSayaMau(item, "pria", "asuransi", asuransi)
+                        }
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
                         <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
@@ -589,15 +650,24 @@ export default function Home() {
                         Plan: {item.plan}
                       </div>
                       <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                        Premi/bulan: {formatRupiah(item[`female_price_${asuransi}`])}
+                        Premi/bulan:{" "}
+                        {formatRupiah(item[`female_price_${asuransi}`])}
                         /bulan
                       </div>
                       <div className="font-medium text-gray-900 whitespace-nowrap italic">
-                        Premi/tahun: {formatRupiah(item[`female_price_${asuransi}`] * 10)}
+                        Premi/tahun:{" "}
+                        {formatRupiah(item[`female_price_${asuransi}`] * 10)}
                         /tahun
                       </div>
                       <button
-                        onClick={() => handleClickSayaMau(item, "wanita", "asuransi", asuransi)}
+                        onClick={() =>
+                          handleClickSayaMau(
+                            item,
+                            "wanita",
+                            "asuransi",
+                            asuransi
+                          )
+                        }
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
                         <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
@@ -717,7 +787,7 @@ export default function Home() {
               </button>
             </form>
 
-           <SearchResult/>
+            <SearchResult />
           </div>
         </section>
         <section className="bg-blue-600 text-white about-us" id="about-us">
@@ -771,7 +841,7 @@ export default function Home() {
           <div className="contact-us" id="contact-us">
             <h2 className="text-2xl font-semibold">Contact Us</h2>
             <div className="h-1 mt-5 bg-slate-800 rounded-md w-[50px]"></div>
-            <div className="content flex flex-col sm:grid grid-cols-2 gap-5">
+            <div className="content flex flex-col md:grid grid-cols-2 gap-5">
               <form
                 className="flex flex-col gap-5 pt-7"
                 onSubmit={handleSubmitContactUs}
@@ -823,7 +893,7 @@ export default function Home() {
                     Umur
                   </label>
                 </div>
-                <div className="btn-group flex gap-5">
+                <div className="btn-group flex flex-col md:flex-row gap-5">
                   <button
                     type="submit"
                     className="px-4 py-2 rounded-lg flex items-center justify-center gap-3 bg-green-500 hover:bg-green-600 capitalize text-white font-semibold w-full"
@@ -840,6 +910,15 @@ export default function Home() {
                   >
                     <Instagram className="text-[0.75rem]" color="#FFF" />
                     Follow Us
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) =>
+                     handleClick(e, "cek-premi")
+                    }
+                    className="px-4 py-2 rounded-lg flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold w-full"
+                  >
+                    Cek Premi Saya
                   </button>
                 </div>
               </form>
