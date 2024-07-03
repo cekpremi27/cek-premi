@@ -153,9 +153,9 @@ export default function Home() {
                             <div>Biaya Pendamping: {item.biaya_pendamping}</div>
                             <button
                               onClick={() => handleClickSayaMau(item, "pria", "premi")}
-                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                              className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
                             </button>
                           </div>
                         </td>
@@ -178,9 +178,9 @@ export default function Home() {
                             <div>Biaya Pendamping: {item.biaya_pendamping}</div>
                             <button
                               onClick={() => handleClickSayaMau(item, "wanita", "premi")}
-                              className="mt-3 px-4 py-2 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
+                              className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
                             </button>
                           </div>
                         </td>
