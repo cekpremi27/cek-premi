@@ -638,7 +638,7 @@ export default function Home() {
               <div className="w-full  md:w-[80%] lg:w-[56%]">
                 <div>
                   <div className="text-4xl lg:text-5xl font-bold mb-8 text-white">
-                    Selamat datang di Cekpremi.my.id
+                    Selamat datang di AsuransiMurah.id
                   </div>
                   <p className="text-white mb-4">
                     Saya, Ascor, sebagai agen MSIG Life, siap membantu Anda
@@ -646,7 +646,7 @@ export default function Home() {
                     dan sesuai dengan kebutuhan Anda.
                   </p>
                   <p className="text-white mb-4">
-                    Di Cekpremi.my.id, kami tidak hanya menyediakan fitur cek
+                    Di AsuransiMurah.id, kami tidak hanya menyediakan fitur cek
                     premi asuransi secara langsung untuk membandingkan
                     produk-produk MSIG Life, tetapi juga menawarkan bantuan dan
                     konsultasi personal dari tim profesional berpengalaman di
@@ -783,7 +783,7 @@ export default function Home() {
               >
                 <p className="">
                   Jangan ragu untuk menghubungi saya, Ascor, atau tim kami di
-                  Cekpremi.my.id untuk informasi lebih lanjut atau konsultasi
+                  AsuransiMurah.id untuk informasi lebih lanjut atau konsultasi
                   gratis. Kami siap membantu Anda melangkah menuju masa depan
                   yang lebih terjamin.
                 </p>
