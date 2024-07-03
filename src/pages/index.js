@@ -155,7 +155,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "pria", "premi")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -180,7 +180,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "wanita", "premi")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -249,7 +249,7 @@ export default function Home() {
                         onClick={() => handleClickSayaMau(item, "pria", "premi")}
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
-                        <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                        <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                       </button>
                     </div>
                   ))}
@@ -286,7 +286,7 @@ export default function Home() {
                         onClick={() => handleClickSayaMau(item, "wanita", "premi")}
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
-                        <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                        <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                       </button>
                     </div>
                   ))}
@@ -358,7 +358,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "pria", "asuransi", "1")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -379,7 +379,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "pria", "asuransi", "2")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -400,7 +400,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "pria", "asuransi", "3")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -421,7 +421,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "1")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -442,7 +442,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "2")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -463,7 +463,7 @@ export default function Home() {
                               onClick={() => handleClickSayaMau(item, "wanita", "asuransi", "3")}
                               className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                             >
-                              <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                              <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                             </button>
                           </div>
                         </td>
@@ -568,7 +568,7 @@ export default function Home() {
                         onClick={() => handleClickSayaMau(item, "pria", "asuransi", asuransi)}
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
-                        <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                        <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                       </button>
                     </div>
                   ))}
@@ -600,7 +600,7 @@ export default function Home() {
                         onClick={() => handleClickSayaMau(item, "wanita", "asuransi", asuransi)}
                         className="mt-3 px-4 py-2 gap-3 rounded-lg flex justify-center items-center bg-blue-500 hover:bg-blue-600 capitalize text-white font-semibold w-full"
                       >
-                        <Whatsapp size="28" color="#FFF" /> Saya mau ini
+                        <Whatsapp size="28" color="#FFF" /> Saya Mau Info Ini
                       </button>
                     </div>
                   ))}
