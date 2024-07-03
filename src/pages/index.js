@@ -627,7 +627,7 @@ export default function Home() {
       <Navbar handleClick={handleClick} />
       <main className="">
         <section id="cek-premi">
-          {/* <div className="relative flex bg-[url('/images/banner.jpg')] bg-cover  bg-left h-[550px]"
+          <div className="relative flex bg-[url('/images/banner.jpg')] bg-cover  bg-left h-[550px]"
             style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url("/images/banner.jpg")', }}
           >
             <div className="container flex justify-center mx-auto px-5 xl:px-32 py-20">
@@ -662,7 +662,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
           <div className="container mx-auto px-5 xl:px-32 cek-premi py-10 flex flex-col gap-8 items-center justify-center">
             <h1 className="text-center font-semibold text-2xl">
               Cek Premi Asuransi Kesehatan Anda Dan Keluarga
