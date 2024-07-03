@@ -911,7 +911,7 @@ export default function Home() {
                     <Instagram className="text-[0.75rem]" color="#FFF" />
                     Follow Us
                   </button>
-                  <button
+                  {/* <button
                     type="button"
                     onClick={(e) =>
                      handleClick(e, "cek-premi")
@@ -919,7 +919,7 @@ export default function Home() {
                     className="px-4 py-2 rounded-lg flex items-center justify-center gap-3 bg-blue-500 hover:bg-blue-600 text-white font-semibold w-full"
                   >
                     Cek Premi Saya
-                  </button>
+                  </button> */}
                 </div>
               </form>
               <div className="flex justify-center items-center">
