@@ -627,46 +627,42 @@ export default function Home() {
       <Navbar handleClick={handleClick} />
       <main className="">
         <section id="cek-premi">
-          // <div
-          //   className="relative flex bg-[url('/images/banner.jpg')] bg-cover  bg-left h-[550px]"
-          //   style={{
-          //     backgroundImage:
-          //       'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url("/images/banner.jpg")',
-          //   }}
-          // >
-          //   <div className="container flex justify-center mx-auto px-5 xl:px-32 py-20">
-          //     <div className="w-full  md:w-[80%] lg:w-[56%]">
-          //       <div>
-          //         <div className="text-4xl lg:text-5xl font-bold mb-8 text-white">
-          //           Selamat datang di AsuransiMurah.id
-          //         </div>
-          //         <p className="text-white mb-4">
-          //           Saya, Ascor, sebagai agen MSIG Life, siap membantu Anda
-          //           dalam menjelajahi beragam produk asuransi yang transparan
-          //           dan sesuai dengan kebutuhan Anda.
-          //         </p>
-          //         <p className="text-white mb-4">
-          //           Di AsuransiMurah.id, kami tidak hanya menyediakan fitur cek
-          //           premi asuransi secara langsung untuk membandingkan
-          //           produk-produk MSIG Life, tetapi juga menawarkan bantuan dan
-          //           konsultasi personal dari tim profesional berpengalaman di
-          //           industri asuransi. Tujuan kami adalah menjadi mitra
-          //           terpercaya dalam perencanaan keuangan dan perlindungan masa
-          //           depan Anda.
-          //         </p>
+          {/* <div className="relative flex bg-[url('/images/banner.jpg')] bg-cover  bg-left h-[550px]"
+            style={{ backgroundImage: 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url("/images/banner.jpg")', }}
+          >
+            <div className="container flex justify-center mx-auto px-5 xl:px-32 py-20">
+              <div className="w-full  md:w-[80%] lg:w-[56%]">
+                <div>
+                  <div className="text-4xl lg:text-5xl font-bold mb-8 text-white">
+                    Selamat datang di AsuransiMurah.id
+                  </div>
+                  <p className="text-white mb-4">
+                    Saya, Ascor, sebagai agen MSIG Life, siap membantu Anda
+                    dalam menjelajahi beragam produk asuransi yang transparan
+                    dan sesuai dengan kebutuhan Anda.
+                  </p>
+                  <p className="text-white mb-4">
+                    Di AsuransiMurah.id, kami tidak hanya menyediakan fitur cek
+                    premi asuransi secara langsung untuk membandingkan
+                    produk-produk MSIG Life, tetapi juga menawarkan bantuan dan
+                    konsultasi personal dari tim profesional berpengalaman di
+                    industri asuransi. Tujuan kami adalah menjadi mitra
+                    terpercaya dalam perencanaan keuangan dan perlindungan masa
+                    depan Anda.
+                  </p>
 
-          //         <div className="flex gap-5">
-          //           <button
-          //             onClick={(e) => handleClick(e, "contact-us")}
-          //             className="bg-blue-700 hover:bg-blue-600 text-white font-semibold text-lg px-5 py-2 rounded-lg"
-          //           >
-          //             Contact Us
-          //           </button>
-          //         </div>
-          //       </div>
-          //     </div>
-          //   </div>
-          // </div>
+                  <div className="flex gap-5">
+                    <button
+                      onClick={(e) => handleClick(e, "contact-us")}
+                      className="bg-blue-700 hover:bg-blue-600 text-white font-semibold text-lg px-5 py-2 rounded-lg"
+                    >
+                      Contact Us
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> */}
           <div className="container mx-auto px-5 xl:px-32 cek-premi py-10 flex flex-col gap-8 items-center justify-center">
             <h1 className="text-center font-semibold text-2xl">
               Cek Premi Asuransi Kesehatan Anda Dan Keluarga
