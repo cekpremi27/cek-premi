@@ -250,5 +250,19 @@
     "female_price_3": 11157900,
     "created_at": "2024-06-23 17:37:54",
     "updated_at": null
+  },
+  {
+    "id": 61,
+    "plan": "SPI 100th MPP 20th",
+    "min_age": 21,
+    "max_age": 21,
+    "male_price_1": 700000,
+    "male_price_2": 5000000,
+    "male_price_3": 12000000,
+    "female_price_1": 500000,
+    "female_price_2": 4000000,
+    "female_price_3": 11000000,
+    "created_at": "2024-06-23 17:37:54",
+    "updated_at": null
   }
 ]
