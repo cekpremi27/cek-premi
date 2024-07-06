@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
-import premiData from "@/data/premi.json";
-import asuransiData from "@/data/asuransi.json";
+import premiData from "@/data/asuransi_kesehatan.json";
+import asuransiData from "@/data/asuransi_jiwa.json";
 import { useEffect, useState } from "react";
 import { formatRupiah } from "@/helpers/helper";
 import Head from "next/head";
