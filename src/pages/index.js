@@ -847,8 +847,7 @@ export default function Home() {
                 onSubmit={handleSubmitContactUs}
               >
                 <p className="">
-                  Jangan ragu untuk menghubungi saya, Ascor, atau tim kami di
-                  AsuransiMurah.id untuk informasi lebih lanjut atau konsultasi
+                  Jangan ragu untuk menghubungi saya untuk informasi lebih lanjut atau konsultasi
                   gratis. Kami siap membantu Anda melangkah menuju masa depan
                   yang lebih terjamin.
                 </p>
