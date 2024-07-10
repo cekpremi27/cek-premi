@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 1,
     "max_age": 1,
     "male_price_1": 1914000,
@@ -15,7 +15,7 @@
   },
   {
     "id": 2,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 2,
     "max_age": 2,
     "male_price_1": 2200000,
@@ -29,7 +29,7 @@
   },
   {
     "id": 3,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 3,
     "max_age": 3,
     "male_price_1": 2262000,
@@ -43,7 +43,7 @@
   },
   {
     "id": 4,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 4,
     "max_age": 4,
     "male_price_1": 2329000,
@@ -57,7 +57,7 @@
   },
   {
     "id": 5,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 5,
     "max_age": 5,
     "male_price_1": 2400000,
@@ -71,7 +71,7 @@
   },
   {
     "id": 6,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 6,
     "max_age": 6,
     "male_price_1": 2476000,
@@ -85,7 +85,7 @@
   },
   {
     "id": 7,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 7,
     "max_age": 7,
     "male_price_1": 2556000,
@@ -99,7 +99,7 @@
   },
   {
     "id": 8,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 8,
     "max_age": 8,
     "male_price_1": 2642000,
@@ -113,7 +113,7 @@
   },
   {
     "id": 9,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 9,
     "max_age": 9,
     "male_price_1": 2733000,
@@ -127,7 +127,7 @@
   },
   {
     "id": 10,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 10,
     "max_age": 10,
     "male_price_1": 2829000,
@@ -141,7 +141,7 @@
   },
   {
     "id": 11,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 11,
     "max_age": 11,
     "male_price_1": 2931000,
@@ -155,7 +155,7 @@
   },
   {
     "id": 12,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 12,
     "max_age": 12,
     "male_price_1": 3039000,
@@ -169,7 +169,7 @@
   },
   {
     "id": 13,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 13,
     "max_age": 13,
     "male_price_1": 3153000,
@@ -183,7 +183,7 @@
   },
   {
     "id": 14,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 14,
     "max_age": 14,
     "male_price_1": 3273000,
@@ -197,7 +197,7 @@
   },
   {
     "id": 15,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 15,
     "max_age": 15,
     "male_price_1": 3400000,
@@ -211,7 +211,7 @@
   },
   {
     "id": 16,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 16,
     "max_age": 16,
     "male_price_1": 3535000,
@@ -225,7 +225,7 @@
   },
   {
     "id": 17,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 17,
     "max_age": 17,
     "male_price_1": 3680000,
@@ -239,7 +239,7 @@
   },
   {
     "id": 18,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 18,
     "max_age": 18,
     "male_price_1": 3835000,
@@ -253,7 +253,7 @@
   },
   {
     "id": 19,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 19,
     "max_age": 19,
     "male_price_1": 4001000,
@@ -267,7 +267,7 @@
   },
   {
     "id": 20,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 20,
     "max_age": 20,
     "male_price_1": 4177000,
@@ -281,7 +281,7 @@
   },
   {
     "id": 21,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 21,
     "max_age": 21,
     "male_price_1": 4365000,
@@ -295,7 +295,7 @@
   },
   {
     "id": 22,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 22,
     "max_age": 22,
     "male_price_1": 4567000,
@@ -309,7 +309,7 @@
   },
   {
     "id": 23,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 23,
     "max_age": 23,
     "male_price_1": 4782000,
@@ -323,7 +323,7 @@
   },
   {
     "id": 24,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 24,
     "max_age": 24,
     "male_price_1": 5012000,
@@ -337,7 +337,7 @@
   },
   {
     "id": 25,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 25,
     "max_age": 25,
     "male_price_1": 5256000,
@@ -351,7 +351,7 @@
   },
   {
     "id": 26,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 26,
     "max_age": 26,
     "male_price_1": 5527000,
@@ -365,7 +365,7 @@
   },
   {
     "id": 27,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 27,
     "max_age": 27,
     "male_price_1": 5796000,
@@ -379,7 +379,7 @@
   },
   {
     "id": 28,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 28,
     "max_age": 28,
     "male_price_1": 6104000,
@@ -393,7 +393,7 @@
   },
   {
     "id": 29,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 29,
     "max_age": 29,
     "male_price_1": 6422000,
@@ -407,7 +407,7 @@
   },
   {
     "id": 30,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 30,
     "max_age": 30,
     "male_price_1": 6762000,
@@ -421,7 +421,7 @@
   },
   {
     "id": 31,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 31,
     "max_age": 31,
     "male_price_1": 7124000,
@@ -435,7 +435,7 @@
   },
   {
     "id": 32,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 32,
     "max_age": 32,
     "male_price_1": 7510000,
@@ -449,7 +449,7 @@
   },
   {
     "id": 33,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 33,
     "max_age": 33,
     "male_price_1": 7923000,
@@ -463,7 +463,7 @@
   },
   {
     "id": 34,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 34,
     "max_age": 34,
     "male_price_1": 8363000,
@@ -477,7 +477,7 @@
   },
   {
     "id": 35,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 35,
     "max_age": 35,
     "male_price_1": 8832000,
@@ -491,7 +491,7 @@
   },
   {
     "id": 36,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 36,
     "max_age": 36,
     "male_price_1": 9333000,
@@ -505,7 +505,7 @@
   },
   {
     "id": 37,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 37,
     "max_age": 37,
     "male_price_1": 9867000,
@@ -519,7 +519,7 @@
   },
   {
     "id": 38,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 38,
     "max_age": 38,
     "male_price_1": 10437000,
@@ -533,7 +533,7 @@
   },
   {
     "id": 39,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 39,
     "max_age": 39,
     "male_price_1": 11047000,
@@ -547,7 +547,7 @@
   },
   {
     "id": 40,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 40,
     "max_age": 40,
     "male_price_1": 11702000,
@@ -561,7 +561,7 @@
   },
   {
     "id": 41,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 41,
     "max_age": 41,
     "male_price_1": 12408000,
@@ -575,7 +575,7 @@
   },
   {
     "id": 42,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 42,
     "max_age": 42,
     "male_price_1": 13175000,
@@ -589,7 +589,7 @@
   },
   {
     "id": 43,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 43,
     "max_age": 43,
     "male_price_1": 14018000,
@@ -603,7 +603,7 @@
   },
   {
     "id": 44,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 44,
     "max_age": 44,
     "male_price_1": 14962000,
@@ -617,7 +617,7 @@
   },
   {
     "id": 45,
-    "plan": "Usia Pertanggungan s/d 55th. masa pembayaran 5th",
+    "plan": "Usia Pertanggungan s/d 55th. MPP 5th",
     "min_age": 45,
     "max_age": 45,
     "male_price_1": 16042000,
